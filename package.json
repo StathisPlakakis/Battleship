@@ -1,6 +1,7 @@
 {
   "name": "configurationtemplate",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "private": true,
   "scripts": {
@@ -22,6 +23,7 @@
     "globals": "^15.2.0",
     "html-webpack-plugin": "^5.6.0",
     "jest": "^29.7.0",
+    "nodemon": "^3.1.4",
     "prettier": "^3.0.0-alpha.6",
     "style-loader": "^4.0.0",
     "webpack": "^5.91.0",
