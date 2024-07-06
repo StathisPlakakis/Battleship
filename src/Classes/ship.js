@@ -1,6 +1,8 @@
 class Ship {
-  constructor() {
-    this.exists = true;
+  constructor(size) {
+    this.size = size;
+    this.totalHits = 0;
+    this.isSunk = false;
   }
 }
 
