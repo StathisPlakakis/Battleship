@@ -9,6 +9,13 @@ test('Ship Class initialization', () => {
       expectedtoBeSunk: false
       ,
     },
+    {
+      received: 12,
+      expectedSize: 12,
+      expectedTotalHits: 0,
+      expectedtoBeSunk: false
+      ,
+    }
   ];
   testCases.forEach((testCase) => {
     expect(new Ship(testCase.received).size).toBe(testCase.expectedSize);
