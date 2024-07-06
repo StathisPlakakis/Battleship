@@ -30,6 +30,10 @@ test('Ship Class Method Hit', () => {
       received: 2,
       expectedTotalHits: 2,
     },
+    {
+      received: 32,
+      expectedTotalHits: 32,
+    }
   ];
   testCases.forEach((testCase) => {
     const ship = new Ship();
