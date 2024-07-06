@@ -1,3 +1,5 @@
+import Ship from "./ship.js"
+
 test('Ship Class exists', () => {
   const testCases = [
     {
