@@ -1,13 +1,18 @@
-import Ship from "./ship.js"
+import Ship from './ship.js';
 
 test('Ship Class exists', () => {
   const testCases = [
     {
-      received: '',
-      expected: true
-    }
-  ]
-  testCases.forEach(testCase => {
-    expect(new Ship(testCase.received).exists).toBe(testCase.expected)
-  })
-})
+      received: 2,
+      expectedSize: 2,
+      expectedTotalHits: 0,
+      expectedtoBeSunk: false
+      ,
+    },
+  ];
+  testCases.forEach((testCase) => {
+    expect(new Ship(testCase.received).size).toBe(testCase.expectedSize);
+    expect(new Ship(testCase.received).totalHits).toBe(testCase.expectedTotalHits);
+    expect(new Ship(testCase.received).isSunk).toBe(testCase.expectedtoBeSunk);
+  });
+});
