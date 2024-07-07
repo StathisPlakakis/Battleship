@@ -6,7 +6,12 @@ class Ship {
   }
 
   hit() {
-    this.totalHits += 1
+    this.totalHits += 1;
+    this.isSunk = this.totalHits >= this.size ?  true : false;
+  }
+
+  isSunked() {
+    return this.isSunk;
   }
 }
 

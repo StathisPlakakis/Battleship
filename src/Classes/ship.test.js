@@ -44,7 +44,7 @@ test('Ship Class Method Hit', () => {
   });
 });
 
-test('Ship Class Method isSunk', () => {
+test('Ship Class Method isSunked', () => {
   const testCases = [
     {
       receivedSize: 2,
@@ -57,6 +57,6 @@ test('Ship Class Method isSunk', () => {
     for (let i = 0; i < testCase.receivedHits; i++) {
       ship.hit();
     }
-    expect(ship.isSunk()).toBe(testCase.expexted);
+    expect(ship.isSunked()).toBe(testCase.expexted);
   });
 });
