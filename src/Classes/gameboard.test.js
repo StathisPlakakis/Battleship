@@ -1,3 +1,5 @@
+import Gameboard from './gameboard.js'
+
 test('Gameboard Class Initialization', () => {
   const testCases = [
     {
