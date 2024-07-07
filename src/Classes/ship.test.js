@@ -43,3 +43,20 @@ test('Ship Class Method Hit', () => {
     expect(ship.totalHits).toBe(testCase.expectedTotalHits);
   });
 });
+
+test('Ship Class Method isSunk', () => {
+  const testCases = [
+    {
+      receivedSize: 2,
+      receivedHits: 1,
+      expexted: false,
+    },
+  ];
+  testCases.forEach((testCase) => {
+    const ship = new Ship(testCase.receivedSize);
+    for (let i = 0; i < testCase.receivedHits; i++) {
+      ship.hit();
+    }
+    expect(ship.isSunk()).toBe(testCase.expexted);
+  });
+});
