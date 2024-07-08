@@ -19,6 +19,6 @@ test('Gameboard Class Initialization', () => {
     },
   ];
   testCases.forEach((testCase) => {
-    expect(new Gameboard(testCase.received).exists).toBe(testCase.expected);
+    expect(new Gameboard(testCase.received).board).toEqual(testCase.expected);
   });
 });
