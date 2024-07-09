@@ -52,10 +52,11 @@ test('Random Placement of ships', () => {
         const specificCell = newBoard.board[i][j];
         //We itterate through all the cells of the board! If the cell is not empty, we take the value of the cell (which represents a part of SPECIFIC ship) and we increment the times we have seen the ship
         if (specificCell.length !== 0) {
-          if (result[specificCell] === undefined) {
-            result[specificCell] = 1;
+          //we are trying to avoid catching the object of Ship that is located in the first cell
+          if (result[specificCell[specificCell.length - 1]] === undefined) {
+            result[specificCell[specificCell.length - 1]] = 1;
           } else {
-            result[specificCell] += 1;
+            result[specificCell[specificCell.length - 1]] += 1;
           }
         }
       }

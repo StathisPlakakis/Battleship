@@ -1,3 +1,5 @@
+import Ship from './ship';
+
 class Gameboard {
   constructor() {
     this.board = [
@@ -59,6 +61,7 @@ class Gameboard {
 
   randomizeShipsPosition(array) {
     for (let ship = 0; ship < array.length; ship++) {
+      const newShip = new Ship(array[ship]);
       const directions = ['horizontal', 'vertical'];
       const randomDirection = Math.floor(Math.random() * 2);
       const direction = directions[randomDirection];
@@ -68,6 +71,7 @@ class Gameboard {
       );
       const x_axis = startingPoint[0];
       const y_axis = startingPoint[1];
+      this.board[x_axis][y_axis].push(newShip);
       if (direction === 'horizontal') {
         for (let i = 0; i < array[ship]; i++) {
           this.board[x_axis + i][y_axis].push(ship);
