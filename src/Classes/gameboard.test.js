@@ -31,16 +31,23 @@ test('Random Placement of ships', () => {
       expextedCompositionOfActiveSquares: { 0: 1 }, //active squares are the squares, where ships have been placed and each square has the index value of the ship that represents
     },
     {
-      receivedNumberOfShips: [3, 4], 
-      expextedCompositionOfActiveSquares: { 0: 3, 1:4 }, 
+      receivedNumberOfShips: [3, 4],
+      expextedCompositionOfActiveSquares: { 0: 3, 1: 4 },
     },
     {
-      receivedNumberOfShips: [4, 2, 3, 2], 
-      expextedCompositionOfActiveSquares: { 0: 4, 1:2, 2:3, 3:2 }, 
+      receivedNumberOfShips: [4, 2, 3, 2],
+      expextedCompositionOfActiveSquares: { 0: 4, 1: 2, 2: 3, 3: 2 },
     },
     {
-      receivedNumberOfShips: [2, 3, 3, 5, 4, 1], 
-      expextedCompositionOfActiveSquares: { 0: 2, 1:3, 2:3, 3:5, 4:4, 5:1 }, 
+      receivedNumberOfShips: [2, 3, 3, 5, 4, 1],
+      expextedCompositionOfActiveSquares: {
+        0: 2,
+        1: 3,
+        2: 3,
+        3: 5,
+        4: 4,
+        5: 1,
+      },
     },
   ];
   testCases.forEach((testCase) => {
@@ -62,5 +69,36 @@ test('Random Placement of ships', () => {
       }
     }
     expect(result).toEqual(testCase.expextedCompositionOfActiveSquares);
+  });
+});
+
+test('receiveAttack method', () => {
+  const testCases = [
+    {
+      receivedArray: [2, 3, 4],
+      receivedCell: [4, 2],
+    },
+  ];
+  testCases.forEach((testCase) => {
+    const newBoard = new Gameboard();
+    newBoard.randomizeShipsPosition(testCase.receivedArray);
+    const x_axis = testCase.receivedCell[0];
+    const y_axis = testCase.receivedCell[1];
+
+    if (newBoard.board[x_axis][y_axis].length !== 0) {
+      newBoard.receiveAttack(testCase.receivedCell);
+      expect(
+        newBoard.board[x_axis][y_axis][
+          newBoard.board[x_axis][y_axis].length - 1
+        ]
+      ).toBe('O');
+    }else {
+      newBoard.receiveAttack(testCase.receivedCell);
+      expect(
+        newBoard.board[x_axis][y_axis][
+          newBoard.board[x_axis][y_axis].length - 1
+        ]
+      ).toBe('X');
+    }
   });
 });
