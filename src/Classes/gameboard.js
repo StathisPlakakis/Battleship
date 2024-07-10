@@ -160,6 +160,21 @@ class Gameboard {
       specificCell.unshift('X');
     }
   }
+
+  gameIsOver() {
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
+        if (
+          this.board[i][j].some(
+            (element) => typeof element === 'object' && element.isSunk === false
+          )
+        ) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
 }
 
 export default Gameboard;
