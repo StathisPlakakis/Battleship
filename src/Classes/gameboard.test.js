@@ -105,3 +105,28 @@ test('receiveAttack method', () => {
     }
   });
 });
+
+test('Game is over', () => {
+  const testCases = [
+    {
+      receivedArray: [4, 3, 3, 2, 4, 2],
+      receivedLoop: false,
+    },
+    {
+      receivedArray: [4, 3, 3, 2, 4, 2],
+      receivedLoop: true,
+    },
+  ];
+  testCases.forEach((testCase) => {
+    const newBoard = new Gameboard();
+    newBoard.randomizeShipsPosition(testCase.receivedArray);
+    if (testCase.receivedLoop === true) {
+      for (let i = 0; i < 10; i++) {
+        for (let j = 0; j < 10; j++) {
+          newBoard.receiveAttack([i, j]);
+        }
+      }
+    }
+    expect(newBoard.gameIsOver()).toBe(testCase.receivedLoop);
+  });
+});
