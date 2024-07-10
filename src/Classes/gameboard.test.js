@@ -78,6 +78,18 @@ test('receiveAttack method', () => {
       receivedArray: [2, 3, 3, 5, 4, 1],
       receivedCell: [4, 2],
     },
+    {
+      receivedArray: [2, 3, 3, 3, 4, 1],
+      receivedCell: [4, 1],
+    },
+    {
+      receivedArray: [1, 3, 3, 5, 4, 1],
+      receivedCell: [6, 5],
+    },
+    {
+      receivedArray: [4, 3, 3, 2, 4, 2],
+      receivedCell: [1, 1],
+    },
   ];
   testCases.forEach((testCase) => {
     const newBoard = new Gameboard();
