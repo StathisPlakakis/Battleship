@@ -20,14 +20,14 @@ class Gameboard {
     let randomiseIsDone = false;
     while (!randomiseIsDone) {
       //we check if the cell that contains the starting point of the ship is empty and inside the boundaries of our board
-      const x_axis = Math.floor(Math.random() * 10);
-      const y_axis = Math.floor(Math.random() * 10);
+      const row = Math.floor(Math.random() * 10);
+      const column = Math.floor(Math.random() * 10);
       let successfulLoopIterration = false;
-      if (direction === 'horizontal') {
+      if (direction === 'vertical') {
         for (let i = 0; i < lengthOfShip; i++) {
           if (
-            x_axis + i > 9 ||
-            this.board[x_axis + i][y_axis].length !== 0 //this checks if all the cells, that are going to contain our ship, are valid
+            row + i > 9 ||
+            this.board[row + i][column].length !== 0 //this checks if all the cells, that are going to contain our ship, are valid
           ) {
             successfulLoopIterration = false;
             break;
@@ -37,13 +37,13 @@ class Gameboard {
         }
         if (successfulLoopIterration) {
           randomiseIsDone = true;
-          return [x_axis, y_axis];
+          return [row, column];
         }
       } else {
         for (let i = 0; i < lengthOfShip; i++) {
           if (
-            y_axis - i < 0 ||
-            this.board[x_axis][y_axis - i].length !== 0 //this checks if all the cells, that are going to contain our ship, are valid
+            column + i > 9 ||
+            this.board[row][column + i].length !== 0 //this checks if all the cells, that are going to contain our ship, are valid
           ) {
             successfulLoopIterration = false;
             break;
@@ -53,7 +53,7 @@ class Gameboard {
         }
         if (successfulLoopIterration) {
           randomiseIsDone = true;
-          return [x_axis, y_axis];
+          return [row, column];
         }
       }
     }
@@ -69,20 +69,22 @@ class Gameboard {
         array[ship],
         direction
       );
-      const x_axis = startingPoint[0];
-      const y_axis = startingPoint[1];
-      this.board[x_axis][y_axis].push(newShip);
-      if (direction === 'horizontal') {
+      const row = startingPoint[0];
+      const column = startingPoint[1];
+      this.board[row][column].push(newShip);
+      if (direction === 'vertical') {
         for (let i = 0; i < array[ship]; i++) {
-          this.board[x_axis + i][y_axis].push(ship);
+          this.board[row + i][column].push(ship);
         }
       } else {
         for (let i = 0; i < array[ship]; i++) {
-          this.board[x_axis][y_axis - i].push(ship);
+          this.board[row][column + i].push(ship);
         }
       }
     }
   }
+
+  
 }
 
 export default Gameboard;
