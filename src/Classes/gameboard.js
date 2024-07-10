@@ -84,7 +84,82 @@ class Gameboard {
     }
   }
 
-  
+  receiveAttack(coordinates) {
+    const row = coordinates[0];
+    const column = coordinates[1];
+    const specificCell = this.board[row][column];
+
+    //first we check if we hit a cell that is not empty (has a missed shot or represents a part of a ship)
+    if (specificCell.length !== 0) {
+      //we check if we hit a cell that represents a part of a ship that we have not hit again in the past
+      if (specificCell[0] !== 'X' && specificCell[0] !== 'O') {
+        specificCell.unshift('O');
+        const specificShipNumber = specificCell[specificCell.length - 1];
+        //we check if the specificCell is the starting point of a horizontal ship (the cell that contains the actual ship class aka the left most cell)
+        let i = 1;
+        let isTheMostLeft = false;
+        while (!isTheMostLeft) {
+          if (
+            column - i < 0 ||
+            this.board[row][column - i].length === 0 ||
+            this.board[row][column - i][
+              this.board[row][column - i].length - 1
+            ] !== specificShipNumber
+          ) {
+            isTheMostLeft = true;
+            //here we found the left most part of the ship (aka possible starting point) and we try to see if there is there the obj
+            if (this.board[row][column - i + 1].length === 2) {
+              //this cell has not been hit
+              if (typeof this.board[row][column - i + 1][0] === 'object') {
+                this.board[row][column - i + 1][0].hit();
+                return;
+              }
+            } else if (this.board[row][column - i + 1].length === 3) {
+              //this cell has  been hit
+              if (typeof this.board[row][column - i + 1][1] === 'object') {
+                this.board[row][column - i + 1][1].hit();
+                return;
+              }
+            }
+          } else {
+            i += 1;
+          }
+        }
+        //we check if the specificCell is the starting point of a vertical ship (the cell that contains the actual ship class aka the top most cell)
+        let j = 1;
+        let isTheMostTop = false;
+        while (!isTheMostTop) {
+          if (
+            row - j < 0 ||
+            this.board[row - j][column].length === 0 ||
+            this.board[row - j][column][
+              this.board[row - j][column].length - 1
+            ] !== specificShipNumber
+          ) {
+            isTheMostTop = true;
+            //here we found the top most part of the ship (aka possible starting point) and we try to see if there is there the obj
+            if (this.board[row - j + 1][column].length === 2) {
+              //this cell has not been hit
+              if (typeof this.board[row - j + 1][column][0] === 'object') {
+                this.board[row - j + 1][column][0].hit();
+                return;
+              }
+            } else if (this.board[row - j + 1][column].length === 3) {
+              //this cell has  been hit
+              if (typeof this.board[row - j + 1][column][1] === 'object') {
+                this.board[row - j + 1][column][1].hit();
+                return;
+              }
+            }
+          } else {
+            j += 1;
+          }
+        }
+      }
+    } else {
+      specificCell.unshift('X');
+    }
+  }
 }
 
 export default Gameboard;

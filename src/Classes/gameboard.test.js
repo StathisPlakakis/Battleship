@@ -72,33 +72,24 @@ test('Random Placement of ships', () => {
   });
 });
 
-// test('receiveAttack method', () => {
-//   const testCases = [
-//     {
-//       receivedArray: [2, 3, 4],
-//       receivedCell: [4, 2],
-//     },
-//   ];
-//   testCases.forEach((testCase) => {
-//     const newBoard = new Gameboard();
-//     newBoard.randomizeShipsPosition(testCase.receivedArray);
-//     const x_axis = testCase.receivedCell[0];
-//     const y_axis = testCase.receivedCell[1];
-
-//     if (newBoard.board[x_axis][y_axis].length !== 0) {
-//       newBoard.receiveAttack(testCase.receivedCell);
-//       expect(
-//         newBoard.board[x_axis][y_axis][
-//           newBoard.board[x_axis][y_axis].length - 1
-//         ]
-//       ).toBe('O');
-//     }else {
-//       newBoard.receiveAttack(testCase.receivedCell);
-//       expect(
-//         newBoard.board[x_axis][y_axis][
-//           newBoard.board[x_axis][y_axis].length - 1
-//         ]
-//       ).toBe('X');
-//     }
-//   });
-// });
+test('receiveAttack method', () => {
+  const testCases = [
+    {
+      receivedArray: [2, 3, 3, 5, 4, 1],
+      receivedCell: [4, 2],
+    },
+  ];
+  testCases.forEach((testCase) => {
+    const newBoard = new Gameboard();
+    newBoard.randomizeShipsPosition(testCase.receivedArray);
+    const x_axis = testCase.receivedCell[0];
+    const y_axis = testCase.receivedCell[1];
+    if (newBoard.board[x_axis][y_axis].length !== 0) {
+      newBoard.receiveAttack(testCase.receivedCell);
+      expect(newBoard.board[x_axis][y_axis][0]).toBe('O');
+    } else {
+      newBoard.receiveAttack(testCase.receivedCell);
+      expect(newBoard.board[x_axis][y_axis][0]).toBe('X');
+    }
+  });
+});
