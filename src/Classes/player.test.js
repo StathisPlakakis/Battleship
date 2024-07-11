@@ -19,6 +19,6 @@ test('Check Player class board', () => {
     },
   ];
   testCases.forEach((testCase) => {
-    expect(new Player().gameboard).toBe(testCase.expected);
+    expect(new Player().gameboard.board).toEqual(testCase.expected);
   });
 });
