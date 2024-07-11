@@ -35,6 +35,6 @@ test('Check if player is real or not', () => {
     },
   ];
   testCases.forEach(testCase => {
-    expect(new Player(testCase.received)).toBe(testCase.expected)
+    expect(new Player(testCase.received).isReal).toBe(testCase.expected)
   })
 });

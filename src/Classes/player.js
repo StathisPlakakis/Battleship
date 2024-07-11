@@ -1,8 +1,9 @@
 import Gameboard from './gameboard';
 
 class Player {
-  constructor() {
+  constructor(isReal) {
     this.gameboard = new Gameboard();
+    this.isReal = isReal;
   }
 }
 
