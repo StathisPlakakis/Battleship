@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Bona Nova SC';
+  font-weight: 400;
+  font-style: normal;
+  src: url('./assets/Bona_Nova_SC/BonaNovaSC-Regular.ttf') format('truetype');
+}
+
 :root {
   --headerText: white;
 }
@@ -18,7 +25,9 @@ header {
 }
 
 header div h1 {
+  font-family: 'Bona Nova SC', sans-serif;
+  letter-spacing: 0.5rem;
   color: var(--headerText);
-  font-size: 5rem;
+  font-size: 6.5rem;
   padding: 1rem;
 }
