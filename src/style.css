@@ -8,6 +8,7 @@
 :root {
   --headerText: white;
   --mainColor: blue;
+  --buttonBackgroundcolor: rgb(172, 211, 255);
 }
 
 * {
@@ -65,4 +66,23 @@ main div p {
   margin-top: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(452px, 1fr));
+}
+
+.buttons {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+button {
+  font-family: 'Bona Nova SC', sans-serif;
+  font-size: 1.5rem;
+  padding: 1rem;
+  background-color: var(--buttonBackgroundcolor);
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(125, 150, 180);
 }
