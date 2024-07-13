@@ -265,7 +265,7 @@ class Gameboard {
       for (let j = 0; j < 10; j++) {
         if (
           this.board[i][j].some(
-            (element) => typeof element === 'object' && element.isSunk === false
+            (element) => typeof element === 'object'&& element !== null && element.isSunk === false
           )
         ) {
           return false;
