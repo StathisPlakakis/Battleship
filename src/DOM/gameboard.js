@@ -30,6 +30,8 @@ function displayGameboards() {
             tableRow.appendChild(tableHeading);
           } else {
             const tableData = document.createElement('td');
+            tableData.setAttribute('row', i - 1);
+            tableData.setAttribute('column', j - 1);
             if (j === 1) {
               tableData.style.borderLeft = '1px solid blue';
             }
@@ -54,6 +56,8 @@ function displayGameboards() {
         lastRow.appendChild(lastHeading);
       } else {
         const tableData = document.createElement('td');
+        tableData.setAttribute('row', playerBoard.length - 1);
+        tableData.setAttribute('column', j - 1);
         if (j === 1) {
           tableData.style.borderLeft = '1px solid blue';
         }
