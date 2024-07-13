@@ -7,11 +7,12 @@
 
 :root {
   --headerText: white;
+  --mainColor: blue;
 }
 
 * {
-  padding: 0;
-  margin: 0;
+  padding: 0rem;
+  margin: 0rem;
 }
 
 html {
@@ -19,7 +20,7 @@ html {
 }
 
 header {
-  background-color: blue;
+  background-color: var(--mainColor);
   display: flex;
   justify-content: center;
 }
@@ -30,4 +31,23 @@ header div h1 {
   color: var(--headerText);
   font-size: 6.5rem;
   padding: 1rem;
+}
+
+table {
+  display: table;
+  border-collapse: separate;
+  border-spacing: 0rem;
+}
+
+td,
+th {
+  width: 4rem;
+  height: 4rem;
+  border: 0.5px solid var(--mainColor);
+  text-align: center;
+}
+th {
+  font-family: 'Bona Nova SC', sans-serif;
+  font-size: 1.5rem;
+  border-color: white;
 }

@@ -30,6 +30,15 @@ function displayGameboards() {
             tableRow.appendChild(tableHeading);
           } else {
             const tableData = document.createElement('td');
+            if (j === 1) {
+              tableData.style.borderLeft = '1px solid blue';
+            }
+            if (j === 10) {
+              tableData.style.borderRight = '1px solid blue';
+            }
+            if (i === 1) {
+              tableData.style.borderTop = '1px solid blue';
+            }
             tableRow.appendChild(tableData);
           }
         }
@@ -45,6 +54,13 @@ function displayGameboards() {
         lastRow.appendChild(lastHeading);
       } else {
         const tableData = document.createElement('td');
+        if (j === 1) {
+          tableData.style.borderLeft = '1px solid blue';
+        }
+        if (j === 10) {
+          tableData.style.borderRight = '1px solid blue';
+        }
+        tableData.style.borderBottom = '1px solid blue';
         lastRow.appendChild(tableData);
       }
     }
