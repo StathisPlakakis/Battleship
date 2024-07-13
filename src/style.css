@@ -44,10 +44,25 @@ th {
   width: 4rem;
   height: 4rem;
   border: 0.5px solid var(--mainColor);
-  text-align: center;
 }
 th {
   font-family: 'Bona Nova SC', sans-serif;
   font-size: 1.5rem;
   border-color: white;
+}
+
+main div {
+  font-family: 'Bona Nova SC', sans-serif;
+  display: grid;
+  justify-items: center;
+}
+
+main div p {
+  font-size: 2rem;
+}
+
+.main {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(452px, 1fr));
 }
