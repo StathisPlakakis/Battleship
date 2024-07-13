@@ -1,12 +1,21 @@
 import './style.css';
 import displayGameboards from './DOM/gameboard';
+import randomizeBoard from './DOM/randomizeBoard';
 
 displayGameboards();
+
 const randomizeButton = document.querySelector('.randomize');
-randomizeButton.addEventListener('click', () => {
-  const playerBoard = document.querySelector('.real');
-  const computerBoard = document.querySelector('.computer');
-  playerBoard.removeChild(playerBoard.lastChild);
-  computerBoard.removeChild(computerBoard.lastChild);
-  displayGameboards();
-});
+const handlerandomizeButtonClick = () => {
+  randomizeBoard();
+};
+randomizeButton.addEventListener('click', handlerandomizeButtonClick);
+
+const startButton = document.querySelector('.start');
+const handlestartButtonClick = () => {
+  randomizeButton.removeEventListener('click', handlerandomizeButtonClick);
+  randomizeButton.style.backgroundColor = 'rgb(166, 167, 169)';
+  startButton.style.backgroundColor = 'rgb(166, 167, 169)';
+  randomizeButton.style.cursor = 'default';
+  startButton.style.cursor = 'default';
+};
+startButton.addEventListener('click', handlestartButtonClick);
