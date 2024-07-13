@@ -75,10 +75,109 @@ class Gameboard {
       if (direction === 'vertical') {
         for (let i = 0; i < array[ship]; i++) {
           this.board[row + i][column].push(ship);
+          //now we will deactivate adjacent cells to our ship for the vertical direction
+          if (
+            i + row - 1 >= 0 &&
+            column - 1 >= 0 &&
+            this.board[i + row - 1][column - 1].length === 0
+          ) {
+            this.board[i + row - 1][column - 1].push(null);
+          }
+          if (
+            i === 0 &&
+            i + row - 1 > 0 &&
+            this.board[i + row - 1][column].length === 0
+          ) {
+            this.board[i + row - 1][column].push(null);
+          }
+          if (
+            i + row - 1 >= 0 &&
+            column + 1 < 10 &&
+            this.board[i + row - 1][column + 1].length === 0
+          ) {
+            this.board[i + row - 1][column + 1].push(null);
+          }
+          if (column - 1 >= 0 && this.board[row][column - 1].length === 0) {
+            this.board[i + row][column - 1].push(null);
+          }
+          if (column + 1 < 10 && this.board[row][column + 1].length === 0) {
+            this.board[i + row][column + 1].push(null);
+          }
+          if (
+            i + row + 1 < 10 &&
+            column - 1 >= 0 &&
+            this.board[i + row + 1][column - 1].length === 0
+          ) {
+            this.board[i + row + 1][column - 1].push(null);
+          }
+          if (
+            i + row + 1 < 10 &&
+            column + 1 < 10 &&
+            this.board[i + row + 1][column + 1].length === 0
+          ) {
+            this.board[i + row + 1][column + 1].push(null);
+          }
+          if (
+            i === array[ship] - 1 &&
+            i + row + 1 < 10 &&
+            this.board[i + row + 1][column].length === 0
+          ) {
+            this.board[i + row + 1][column].push(null);
+          }
         }
       } else {
+        //now we will deactivate adjacent cells to our ship for the horizontal direction
+
         for (let i = 0; i < array[ship]; i++) {
           this.board[row][column + i].push(ship);
+          if (
+            row - 1 >= 0 &&
+            i + column - 1 >= 0 &&
+            this.board[row - 1][i + column - 1].length === 0
+          ) {
+            this.board[row - 1][i + column - 1].push(null);
+          }
+          if (
+            i === 0 &&
+            i + column - 1 >= 0 &&
+            this.board[row][i + column - 1].length === 0
+          ) {
+            this.board[row][i + column - 1].push(null);
+          }
+          if (
+            row - 1 >= 0 &&
+            i + column + 1 < 10 &&
+            this.board[row - 1][i + column + 1].length === 0
+          ) {
+            this.board[row - 1][i + column + 1].push(null);
+          }
+          if (row - 1 >= 0 && this.board[row - 1][i + column].length === 0) {
+            this.board[row - 1][i + column].push(null);
+          }
+          if (row + 1 < 10 && this.board[row + 1][i + column].length === 0) {
+            this.board[row + 1][i + column].push(null);
+          }
+          if (
+            row + 1 < 10 &&
+            i + column - 1 >= 0 &&
+            this.board[row + 1][i + column - 1].length === 0
+          ) {
+            this.board[row + 1][i + column - 1].push(null);
+          }
+          if (
+            row + 1 < 10 &&
+            i + column + 1 < 10 &&
+            this.board[row + 1][i + column + 1].length === 0
+          ) {
+            this.board[row + 1][i + column + 1].push(null);
+          }
+          if (
+            i === array[ship] - 1 &&
+            i + column + 1 < 10 &&
+            this.board[row][i + column + 1].length === 0
+          ) {
+            this.board[row][i + column + 1].push(null);
+          }
         }
       }
     }
