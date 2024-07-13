@@ -4,7 +4,8 @@ function displayGameboards() {
   const players = [new Player(true), new Player(false)];
   for (let i = 0; i < 2; i++) {
     const table = document.createElement('table');
-
+    //we initialize the board with random ship positions
+    players[i].gameboard.randomizeShipsPosition([2, 3, 4, 3, 5]);
     const playerBoard = players[i].gameboard.board;
     for (let i = 0; i < playerBoard.length; i++) {
       const tableRow = document.createElement('tr');
@@ -24,12 +25,20 @@ function displayGameboards() {
           tableRow.appendChild(tableHeading);
         } else {
           if (j === 0) {
-            //In the first column we pass thnumerically the rows
+            //In the first column we pass numerically the rows
             const tableHeading = document.createElement('th');
             tableHeading.textContent = i;
             tableRow.appendChild(tableHeading);
           } else {
             const tableData = document.createElement('td');
+            //now we will place the ships
+            if (
+              typeof playerBoard[i - 1][j - 1][
+                playerBoard[i - 1][j - 1].length - 1
+              ] === 'number'
+            ) {
+              tableData.style.backgroundColor = 'blue';
+            }
             tableData.setAttribute('row', i - 1);
             tableData.setAttribute('column', j - 1);
             if (j === 1) {
@@ -56,6 +65,14 @@ function displayGameboards() {
         lastRow.appendChild(lastHeading);
       } else {
         const tableData = document.createElement('td');
+        //now we will place the ships in  the last row
+        if (
+          typeof playerBoard[playerBoard.length - 1][j - 1][
+            playerBoard[playerBoard.length - 1][j - 1].length - 1
+          ] === 'number'
+        ) {
+          tableData.style.backgroundColor = 'blue';
+        }
         tableData.setAttribute('row', playerBoard.length - 1);
         tableData.setAttribute('column', j - 1);
         if (j === 1) {
