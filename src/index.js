@@ -31,5 +31,15 @@ const handlestartButtonClick = () => {
   startButton.style.cursor = 'default';
   randomizeButton.disabled = true;
   randomizeButton.style.cursor = 'default';
+  const cells = document.querySelectorAll('.computer td');
+  cells.forEach((cell) => {
+    cell.addEventListener('mouseenter', () => {
+      cell.style.backgroundColor = 'blue';
+      cell.style.cursor = 'crosshair';
+    });
+    cell.addEventListener('mouseleave', () => {
+      cell.style.backgroundColor = 'white';
+    });
+  });
 };
 startButton.addEventListener('click', handlestartButtonClick);
