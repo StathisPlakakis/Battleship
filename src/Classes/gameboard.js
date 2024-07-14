@@ -190,6 +190,9 @@ class Gameboard {
 
     //first we check if we hit a cell that is not empty (has a missed shot or represents a part of a ship)
     if (specificCell.length !== 0) {
+      if (specificCell[0] === null) {
+        specificCell.unshift('X');
+      }
       //we check if we hit a cell that represents a part of a ship that we have not hit again in the past
       if (specificCell[0] !== 'X' && specificCell[0] !== 'O') {
         specificCell.unshift('O');

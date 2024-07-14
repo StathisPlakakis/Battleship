@@ -96,7 +96,12 @@ test('receiveAttack method', () => {
     newBoard.randomizeShipsPosition(testCase.receivedArray);
     const x_axis = testCase.receivedCell[0];
     const y_axis = testCase.receivedCell[1];
-    if (newBoard.board[x_axis][y_axis].length !== 0) {
+    if (
+      newBoard.board[x_axis][y_axis].length !== 0 &&
+      newBoard.board[x_axis][y_axis][
+        newBoard.board[x_axis][y_axis].length - 1
+      ] !== null
+    ) {
       newBoard.receiveAttack(testCase.receivedCell);
       expect(newBoard.board[x_axis][y_axis][0]).toBe('O');
     } else {
