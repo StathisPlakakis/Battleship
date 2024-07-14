@@ -6,7 +6,6 @@ const realPlayer = new Player(true);
 const computerPlayer = new Player(false);
 const players = [realPlayer, computerPlayer];
 
-displayGameboards(players);
 randomizeBoard(players);
 displayGameboards(players);
 
