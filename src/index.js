@@ -6,16 +6,23 @@ displayGameboards();
 
 const randomizeButton = document.querySelector('.randomize');
 const handlerandomizeButtonClick = () => {
+  randomizeButton.disabled = true;
+  randomizeButton.style.cursor = 'default';
   randomizeBoard();
+  setTimeout(() => {
+    if (startButton.disabled !== true) {
+      randomizeButton.style.cursor = 'pointer';
+      randomizeButton.disabled = false;
+    }
+  }, 1500);
 };
 randomizeButton.addEventListener('click', handlerandomizeButtonClick);
 
 const startButton = document.querySelector('.start');
 const handlestartButtonClick = () => {
-  randomizeButton.removeEventListener('click', handlerandomizeButtonClick);
-  randomizeButton.style.backgroundColor = 'rgb(166, 167, 169)';
-  startButton.style.backgroundColor = 'rgb(166, 167, 169)';
-  randomizeButton.style.cursor = 'default';
+  startButton.disabled = true;
   startButton.style.cursor = 'default';
+  randomizeButton.disabled = true;
+  randomizeButton.style.cursor = 'default';
 };
 startButton.addEventListener('click', handlestartButtonClick);
