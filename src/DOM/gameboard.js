@@ -1,11 +1,14 @@
-import Player from '../Classes/player';
-
-function displayGameboards() {
-  const players = [new Player(true), new Player(false)];
-  for (let i = 0; i < 2; i++) {
+function displayGameboards(players) {
+  const real = document.querySelector('.real');
+  if (real.children.length === 2) {
+    real.removeChild(real.lastChild);
+  }
+  const computer = document.querySelector('.computer');
+  if (computer.children.length === 2) {
+    computer.removeChild(computer.lastChild);
+  }
+  for (let i = 0; i < players.length; i++) {
     const table = document.createElement('table');
-    //we initialize the board with random ship positions
-    players[i].gameboard.randomizeShipsPosition([2, 3, 4, 3, 5]);
     const playerBoard = players[i].gameboard.board;
     for (let i = 0; i < playerBoard.length; i++) {
       const tableRow = document.createElement('tr');

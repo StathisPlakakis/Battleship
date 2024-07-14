@@ -1,14 +1,22 @@
 import './style.css';
+import Player from './Classes/player';
 import displayGameboards from './DOM/gameboard';
 import randomizeBoard from './DOM/randomizeBoard';
+const realPlayer = new Player(true);
+const computerPlayer = new Player(false);
+const players = [realPlayer, computerPlayer];
 
-displayGameboards();
+displayGameboards(players);
+randomizeBoard(players);
+displayGameboards(players);
 
 const randomizeButton = document.querySelector('.randomize');
 const handlerandomizeButtonClick = () => {
+  randomizeBoard(players);
+  displayGameboards(players);
   randomizeButton.disabled = true;
   randomizeButton.style.cursor = 'default';
-  randomizeBoard();
+
   setTimeout(() => {
     if (startButton.disabled !== true) {
       randomizeButton.style.cursor = 'pointer';

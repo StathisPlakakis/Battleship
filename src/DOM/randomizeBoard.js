@@ -1,11 +1,19 @@
-import displayGameboards from './gameboard';
-
-function randomizeBoard() {
-  const playerBoard = document.querySelector('.real');
-  const computerBoard = document.querySelector('.computer');
-  playerBoard.removeChild(playerBoard.lastChild);
-  computerBoard.removeChild(computerBoard.lastChild);
-  displayGameboards();
+function randomizeBoard(players) {
+  for (let i = 0; i < players.length; i++) {
+    players[i].gameboard.board = [
+      [[], [], [], [], [], [], [], [], [], []],
+      [[], [], [], [], [], [], [], [], [], []],
+      [[], [], [], [], [], [], [], [], [], []],
+      [[], [], [], [], [], [], [], [], [], []],
+      [[], [], [], [], [], [], [], [], [], []],
+      [[], [], [], [], [], [], [], [], [], []],
+      [[], [], [], [], [], [], [], [], [], []],
+      [[], [], [], [], [], [], [], [], [], []],
+      [[], [], [], [], [], [], [], [], [], []],
+      [[], [], [], [], [], [], [], [], [], []],
+    ];
+    players[i].gameboard.randomizeShipsPosition([2, 3, 3, 4, 5]);
+  }
 }
 
 export default randomizeBoard;
