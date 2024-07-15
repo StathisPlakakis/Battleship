@@ -72,7 +72,7 @@ function displayGameboards(players) {
                 const row = specificCell.getAttribute('row');
                 const column = specificCell.getAttribute('column');
                 players[a].gameboard.receiveAttack([row, column]);
-                displayGameboards([realPlayer, computerPlayer]);
+                displayGameboards([players[0], players[1]]);
               });
             }
 
@@ -99,6 +99,12 @@ function displayGameboards(players) {
         ) {
           tableData.style.backgroundColor = 'blue';
         }
+        if (playerBoard[playerBoard.length - 1][j - 1][0] === 'X') {
+          tableData.style.backgroundColor = 'red';
+        }
+        if (playerBoard[playerBoard.length - 1][j - 1][0] === 'O') {
+          tableData.style.backgroundColor = 'green';
+        }
         tableData.setAttribute('row', playerBoard.length - 1);
         tableData.setAttribute('column', j - 1);
         if (j === 1) {
@@ -121,7 +127,7 @@ function displayGameboards(players) {
             const row = specificCell.getAttribute('row');
             const column = specificCell.getAttribute('column');
             players[a].gameboard.receiveAttack([row, column]);
-            displayGameboards([realPlayer, computerPlayer]);
+            displayGameboards([players[0], players[1]]);
           });
         }
         lastRow.appendChild(tableData);
