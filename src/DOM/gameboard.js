@@ -77,6 +77,10 @@ function displayGameboards(players) {
                   players[a].gameboard.board[row][column][0] !== 'O'
                 ) {
                   players[a].gameboard.receiveAttack([row, column]);
+                  if (players[a].gameboard.gameIsOver()) {
+                    document.querySelector('dialog h1').textContent = 'Victory';
+                    document.querySelector('dialog').showModal();
+                  }
                   //Now the computer attacks
                   let rowForComAttack = Math.floor(Math.random() * 10);
                   let columnForComAttack = Math.floor(Math.random() * 10);
@@ -95,6 +99,10 @@ function displayGameboards(players) {
                     rowForComAttack,
                     columnForComAttack,
                   ]);
+                  if (players[0].gameboard.gameIsOver()) {
+                    document.querySelector('dialog h1').textContent = 'Defeat';
+                    document.querySelector('dialog').showModal();
+                  }
                   displayGameboards([players[0], players[1]]);
                 }
               });
@@ -155,6 +163,10 @@ function displayGameboards(players) {
               players[a].gameboard.board[row][column][0] !== 'O'
             ) {
               players[a].gameboard.receiveAttack([row, column]);
+              if (players[a].gameboard.gameIsOver()) {
+                document.querySelector('dialog h1').textContent = 'Victory';
+                document.querySelector('dialog').showModal();
+              }
               //Now the computer attacks
               let rowForComAttack = Math.floor(Math.random() * 10);
               let columnForComAttack = Math.floor(Math.random() * 10);
@@ -173,6 +185,10 @@ function displayGameboards(players) {
                 rowForComAttack,
                 columnForComAttack,
               ]);
+              if (players[0].gameboard.gameIsOver()) {
+                document.querySelector('dialog h1').textContent = 'Defeat';
+                document.querySelector('dialog').showModal();
+              }
               displayGameboards([players[0], players[1]]);
             }
           });
