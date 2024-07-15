@@ -7,9 +7,9 @@ function displayGameboards(players) {
   if (computer.children.length === 2) {
     computer.removeChild(computer.lastChild);
   }
-  for (let i = 0; i < players.length; i++) {
+  for (let a = 0; a < players.length; a++) {
     const table = document.createElement('table');
-    const playerBoard = players[i].gameboard.board;
+    const playerBoard = players[a].gameboard.board;
     for (let i = 0; i < playerBoard.length; i++) {
       const tableRow = document.createElement('tr');
       for (let j = 0; j < playerBoard[i].length + 1; j++) {
@@ -42,6 +42,12 @@ function displayGameboards(players) {
             ) {
               tableData.style.backgroundColor = 'blue';
             }
+            if (playerBoard[i - 1][j - 1][0] === 'X') {
+              tableData.style.backgroundColor = 'red';
+            }
+            if (playerBoard[i - 1][j - 1][0] === 'O') {
+              tableData.style.backgroundColor = 'green';
+            }
             tableData.setAttribute('row', i - 1);
             tableData.setAttribute('column', j - 1);
             if (j === 1) {
@@ -53,6 +59,23 @@ function displayGameboards(players) {
             if (i === 1) {
               tableData.style.borderTop = '1px solid blue';
             }
+            // if (!players[a].isReal) {
+            //   tableData.addEventListener('mouseenter', () => {
+            //     // cell.style.backgroundColor = 'blue';
+            //     tableData.style.cursor = 'crosshair';
+            //   });
+            //   tableData.addEventListener('mouseleave', () => {
+            //     // tableData.style.backgroundColor = 'white';
+            //   });
+            //   tableData.addEventListener('click', (e) => {
+            //     const specificCell = e.target;
+            //     const row = specificCell.getAttribute('row');
+            //     const column = specificCell.getAttribute('column');
+            //     players[a].gameboard.receiveAttack([row, column]);
+            //     displayGameboards([realPlayer, computerPlayer]);
+            //   });
+            // }
+
             tableRow.appendChild(tableData);
           }
         }
@@ -90,7 +113,7 @@ function displayGameboards(players) {
     }
     table.appendChild(lastRow);
 
-    if (i === 0) {
+    if (a === 0) {
       document.querySelector('.real').appendChild(table);
     } else {
       document.querySelector('.computer').appendChild(table);

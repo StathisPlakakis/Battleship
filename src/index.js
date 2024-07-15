@@ -32,21 +32,5 @@ const handlestartButtonClick = () => {
   startButton.style.cursor = 'default';
   randomizeButton.disabled = true;
   randomizeButton.style.cursor = 'default';
-  const cells = document.querySelectorAll('.computer td');
-  cells.forEach((cell) => {
-    cell.addEventListener('mouseenter', () => {
-      // cell.style.backgroundColor = 'blue';
-      cell.style.cursor = 'crosshair';
-    });
-    cell.addEventListener('mouseleave', () => {
-      // cell.style.backgroundColor = 'white';
-    });
-    cell.addEventListener('click', (e) => {
-      const specificCell = e.target;
-      const row = specificCell.getAttribute('row');
-      const column = specificCell.getAttribute('column');
-      computerPlayer.gameboard.receiveAttack([row, column]);
-    });
-  });
 };
 startButton.addEventListener('click', handlestartButtonClick);

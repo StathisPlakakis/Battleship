@@ -16,6 +16,27 @@ class Gameboard {
     ];
   }
 
+  boardIsEmpty() {
+    if (
+      this.board ==
+      [
+        [[], [], [], [], [], [], [], [], [], []],
+        [[], [], [], [], [], [], [], [], [], []],
+        [[], [], [], [], [], [], [], [], [], []],
+        [[], [], [], [], [], [], [], [], [], []],
+        [[], [], [], [], [], [], [], [], [], []],
+        [[], [], [], [], [], [], [], [], [], []],
+        [[], [], [], [], [], [], [], [], [], []],
+        [[], [], [], [], [], [], [], [], [], []],
+        [[], [], [], [], [], [], [], [], [], []],
+        [[], [], [], [], [], [], [], [], [], []],
+      ]
+    ) {
+      return true;
+    }
+    return false;
+  }
+
   pickRandomStartingPoint(lengthOfShip, direction) {
     let randomiseIsDone = false;
     while (!randomiseIsDone) {
@@ -268,7 +289,10 @@ class Gameboard {
       for (let j = 0; j < 10; j++) {
         if (
           this.board[i][j].some(
-            (element) => typeof element === 'object'&& element !== null && element.isSunk === false
+            (element) =>
+              typeof element === 'object' &&
+              element !== null &&
+              element.isSunk === false
           )
         ) {
           return false;
