@@ -67,12 +67,36 @@ function displayGameboards(players) {
               tableData.addEventListener('mouseleave', () => {
                 // tableData.style.backgroundColor = 'white';
               });
+              //Now we add the logic of the game
               tableData.addEventListener('click', (e) => {
                 const specificCell = e.target;
                 const row = specificCell.getAttribute('row');
                 const column = specificCell.getAttribute('column');
-                players[a].gameboard.receiveAttack([row, column]);
-                displayGameboards([players[0], players[1]]);
+                if (
+                  players[a].gameboard.board[row][column][0] !== 'X' &&
+                  players[a].gameboard.board[row][column][0] !== 'O'
+                ) {
+                  players[a].gameboard.receiveAttack([row, column]);
+                  //Now the computer attacks
+                  let rowForComAttack = Math.floor(Math.random() * 10);
+                  let columnForComAttack = Math.floor(Math.random() * 10);
+                  while (
+                    players[0].gameboard.board[rowForComAttack][
+                      columnForComAttack
+                    ][0] === 'X' ||
+                    players[0].gameboard.board[rowForComAttack][
+                      columnForComAttack
+                    ][0] === 'O'
+                  ) {
+                    rowForComAttack = Math.floor(Math.random() * 10);
+                    columnForComAttack = Math.floor(Math.random() * 10);
+                  }
+                  players[0].gameboard.receiveAttack([
+                    rowForComAttack,
+                    columnForComAttack,
+                  ]);
+                  displayGameboards([players[0], players[1]]);
+                }
               });
             }
 
@@ -126,8 +150,31 @@ function displayGameboards(players) {
             const specificCell = e.target;
             const row = specificCell.getAttribute('row');
             const column = specificCell.getAttribute('column');
-            players[a].gameboard.receiveAttack([row, column]);
-            displayGameboards([players[0], players[1]]);
+            if (
+              players[a].gameboard.board[row][column][0] !== 'X' &&
+              players[a].gameboard.board[row][column][0] !== 'O'
+            ) {
+              players[a].gameboard.receiveAttack([row, column]);
+              //Now the computer attacks
+              let rowForComAttack = Math.floor(Math.random() * 10);
+              let columnForComAttack = Math.floor(Math.random() * 10);
+              while (
+                players[0].gameboard.board[rowForComAttack][
+                  columnForComAttack
+                ][0] === 'X' ||
+                players[0].gameboard.board[rowForComAttack][
+                  columnForComAttack
+                ][0] === 'O'
+              ) {
+                rowForComAttack = Math.floor(Math.random() * 10);
+                columnForComAttack = Math.floor(Math.random() * 10);
+              }
+              players[0].gameboard.receiveAttack([
+                rowForComAttack,
+                columnForComAttack,
+              ]);
+              displayGameboards([players[0], players[1]]);
+            }
           });
         }
         lastRow.appendChild(tableData);
