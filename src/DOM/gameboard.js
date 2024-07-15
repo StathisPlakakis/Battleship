@@ -59,22 +59,22 @@ function displayGameboards(players) {
             if (i === 1) {
               tableData.style.borderTop = '1px solid blue';
             }
-            // if (!players[a].isReal) {
-            //   tableData.addEventListener('mouseenter', () => {
-            //     // cell.style.backgroundColor = 'blue';
-            //     tableData.style.cursor = 'crosshair';
-            //   });
-            //   tableData.addEventListener('mouseleave', () => {
-            //     // tableData.style.backgroundColor = 'white';
-            //   });
-            //   tableData.addEventListener('click', (e) => {
-            //     const specificCell = e.target;
-            //     const row = specificCell.getAttribute('row');
-            //     const column = specificCell.getAttribute('column');
-            //     players[a].gameboard.receiveAttack([row, column]);
-            //     displayGameboards([realPlayer, computerPlayer]);
-            //   });
-            // }
+            if (!players[a].isReal && !players[a].gameboard.boardIsEmpty()) {
+              tableData.addEventListener('mouseenter', () => {
+                // cell.style.backgroundColor = 'blue';
+                tableData.style.cursor = 'crosshair';
+              });
+              tableData.addEventListener('mouseleave', () => {
+                // tableData.style.backgroundColor = 'white';
+              });
+              tableData.addEventListener('click', (e) => {
+                const specificCell = e.target;
+                const row = specificCell.getAttribute('row');
+                const column = specificCell.getAttribute('column');
+                players[a].gameboard.receiveAttack([row, column]);
+                displayGameboards([realPlayer, computerPlayer]);
+              });
+            }
 
             tableRow.appendChild(tableData);
           }
@@ -108,6 +108,22 @@ function displayGameboards(players) {
           tableData.style.borderRight = '1px solid blue';
         }
         tableData.style.borderBottom = '1px solid blue';
+        if (!players[a].isReal && !players[a].gameboard.boardIsEmpty()) {
+          tableData.addEventListener('mouseenter', () => {
+            // cell.style.backgroundColor = 'blue';
+            tableData.style.cursor = 'crosshair';
+          });
+          tableData.addEventListener('mouseleave', () => {
+            // tableData.style.backgroundColor = 'white';
+          });
+          tableData.addEventListener('click', (e) => {
+            const specificCell = e.target;
+            const row = specificCell.getAttribute('row');
+            const column = specificCell.getAttribute('column');
+            players[a].gameboard.receiveAttack([row, column]);
+            displayGameboards([realPlayer, computerPlayer]);
+          });
+        }
         lastRow.appendChild(tableData);
       }
     }
