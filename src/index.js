@@ -34,3 +34,8 @@ const handlestartButtonClick = () => {
   randomizeButton.style.cursor = 'default';
 };
 startButton.addEventListener('click', handlestartButtonClick);
+const dialog = document.querySelector('dialog');
+const resetButton = document.querySelector('.resetButton');
+resetButton.addEventListener('click', () => {
+  dialog.close();
+});

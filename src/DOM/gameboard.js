@@ -79,7 +79,9 @@ function displayGameboards(players) {
                   players[a].gameboard.receiveAttack([row, column]);
                   if (players[a].gameboard.gameIsOver()) {
                     document.querySelector('dialog h1').textContent = 'Victory';
+                    displayGameboards([players[0], players[1]]);
                     document.querySelector('dialog').showModal();
+                    return;
                   }
                   //Now the computer attacks
                   let rowForComAttack = Math.floor(Math.random() * 10);
@@ -101,7 +103,9 @@ function displayGameboards(players) {
                   ]);
                   if (players[0].gameboard.gameIsOver()) {
                     document.querySelector('dialog h1').textContent = 'Defeat';
+                    displayGameboards([players[0], players[1]]);
                     document.querySelector('dialog').showModal();
+                    return;
                   }
                   displayGameboards([players[0], players[1]]);
                 }
@@ -165,7 +169,9 @@ function displayGameboards(players) {
               players[a].gameboard.receiveAttack([row, column]);
               if (players[a].gameboard.gameIsOver()) {
                 document.querySelector('dialog h1').textContent = 'Victory';
+                displayGameboards([players[0], players[1]]);
                 document.querySelector('dialog').showModal();
+                return;
               }
               //Now the computer attacks
               let rowForComAttack = Math.floor(Math.random() * 10);
@@ -187,7 +193,9 @@ function displayGameboards(players) {
               ]);
               if (players[0].gameboard.gameIsOver()) {
                 document.querySelector('dialog h1').textContent = 'Defeat';
+                displayGameboards([players[0], players[1]]);
                 document.querySelector('dialog').showModal();
+                return;
               }
               displayGameboards([players[0], players[1]]);
             }
