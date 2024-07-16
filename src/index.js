@@ -38,4 +38,12 @@ const dialog = document.querySelector('dialog');
 const resetButton = document.querySelector('.resetButton');
 resetButton.addEventListener('click', () => {
   dialog.close();
+  realPlayer.gameboard.resetBoard();
+  computerPlayer.gameboard.resetBoard();
+  randomizeBoard([realPlayer]);
+  startButton.disabled = false;
+  startButton.style.cursor = 'pointer';
+  randomizeButton.disabled = false;
+  randomizeButton.style.cursor = 'pointer';
+  displayGameboards([realPlayer, computerPlayer]);
 });
