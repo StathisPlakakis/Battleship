@@ -9,6 +9,7 @@
   --headerText: white;
   --mainColor: blue;
   --buttonBackgroundcolor: rgb(172, 211, 255);
+  --dialogColor: rgba(71, 94, 141, 0.9);
 }
 
 * {
@@ -88,5 +89,30 @@ button:hover {
 }
 
 dialog {
-  
+  width: 50rem;
+  height: 50rem;
+  border: none;
+  background-color: var(--dialogColor);
+  display: grid;
+  align-content: center;
+  text-align: center;
+  font-family: 'Bona Nova SC', sans-serif;
+  gap: 5rem;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+dialog h1 {
+  font-size: 10rem;
+  letter-spacing: 1.5rem;
+}
+
+dialog button {
+  word-spacing: 0.5rem;
+  font-size: 2rem;
 }

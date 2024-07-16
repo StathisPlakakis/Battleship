@@ -100,6 +100,7 @@ function displayGameboards(players) {
                     document.querySelector('dialog h1').textContent = 'Victory';
                     displayGameboards([players[0], players[1]]);
                     document.querySelector('dialog').showModal();
+                    document.querySelector('dialog').style.display = 'grid';
                     return;
                   }
                   //Now the computer attacks
@@ -124,6 +125,7 @@ function displayGameboards(players) {
                     document.querySelector('dialog h1').textContent = 'Defeat';
                     displayGameboards([players[0], players[1]]);
                     document.querySelector('dialog').showModal();
+                    document.querySelector('dialog').style.display = 'grid';
                     return;
                   }
                   displayGameboards([players[0], players[1]]);
@@ -209,6 +211,7 @@ function displayGameboards(players) {
                 document.querySelector('dialog h1').textContent = 'Victory';
                 displayGameboards([players[0], players[1]]);
                 document.querySelector('dialog').showModal();
+                document.querySelector('dialog').style.display = 'grid';
                 return;
               }
               //Now the computer attacks
@@ -233,6 +236,7 @@ function displayGameboards(players) {
                 document.querySelector('dialog h1').textContent = 'Defeat';
                 displayGameboards([players[0], players[1]]);
                 document.querySelector('dialog').showModal();
+                document.querySelector('dialog').style.display = 'grid';
                 return;
               }
               displayGameboards([players[0], players[1]]);

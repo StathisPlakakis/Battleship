@@ -23,6 +23,7 @@ const handlerandomizeButtonClick = () => {
   }, 1500);
 };
 randomizeButton.addEventListener('click', handlerandomizeButtonClick);
+const dialog = document.querySelector('dialog');
 
 const startButton = document.querySelector('.start');
 const handlestartButtonClick = () => {
@@ -34,10 +35,10 @@ const handlestartButtonClick = () => {
   randomizeButton.style.cursor = 'default';
 };
 startButton.addEventListener('click', handlestartButtonClick);
-const dialog = document.querySelector('dialog');
 const resetButton = document.querySelector('.resetButton');
 resetButton.addEventListener('click', () => {
   dialog.close();
+  document.querySelector('dialog').style.display = 'none';
   realPlayer.gameboard.resetBoard();
   computerPlayer.gameboard.resetBoard();
   randomizeBoard([realPlayer]);
