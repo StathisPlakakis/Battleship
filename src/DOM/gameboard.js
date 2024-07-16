@@ -36,6 +36,7 @@ function displayGameboards(players) {
             const tableData = document.createElement('td');
             //now we will place the ships
             if (
+              a === 0 &&
               typeof playerBoard[i - 1][j - 1][
                 playerBoard[i - 1][j - 1].length - 1
               ] === 'number'
@@ -60,12 +61,30 @@ function displayGameboards(players) {
               tableData.style.borderTop = '1px solid blue';
             }
             if (!players[a].isReal && !players[a].gameboard.boardIsEmpty()) {
-              tableData.addEventListener('mouseenter', () => {
-                // cell.style.backgroundColor = 'blue';
+              tableData.addEventListener('mouseenter', (e) => {
+                const cell = e.target;
+                const row = cell.getAttribute('row');
+                const column = cell.getAttribute('column');
+
+                if (
+                  players[a].gameboard.board[row][column][0] !== 'X' &&
+                  players[a].gameboard.board[row][column][0] !== 'O'
+                ) {
+                  tableData.style.backgroundColor = 'blue';
+                }
                 tableData.style.cursor = 'crosshair';
               });
-              tableData.addEventListener('mouseleave', () => {
-                // tableData.style.backgroundColor = 'white';
+              tableData.addEventListener('mouseleave', (e) => {
+                const cell = e.target;
+                const row = cell.getAttribute('row');
+                const column = cell.getAttribute('column');
+
+                if (
+                  players[a].gameboard.board[row][column][0] !== 'X' &&
+                  players[a].gameboard.board[row][column][0] !== 'O'
+                ) {
+                  tableData.style.backgroundColor = 'white';
+                }
               });
               //Now we add the logic of the game
               tableData.addEventListener('click', (e) => {
@@ -129,6 +148,7 @@ function displayGameboards(players) {
         const tableData = document.createElement('td');
         //now we will place the ships in  the last row
         if (
+          a === 0 &&
           typeof playerBoard[playerBoard.length - 1][j - 1][
             playerBoard[playerBoard.length - 1][j - 1].length - 1
           ] === 'number'
@@ -151,12 +171,30 @@ function displayGameboards(players) {
         }
         tableData.style.borderBottom = '1px solid blue';
         if (!players[a].isReal && !players[a].gameboard.boardIsEmpty()) {
-          tableData.addEventListener('mouseenter', () => {
-            // cell.style.backgroundColor = 'blue';
+          tableData.addEventListener('mouseenter', (e) => {
+            const cell = e.target;
+            const row = cell.getAttribute('row');
+            const column = cell.getAttribute('column');
+
+            if (
+              players[a].gameboard.board[row][column][0] !== 'X' &&
+              players[a].gameboard.board[row][column][0] !== 'O'
+            ) {
+              tableData.style.backgroundColor = 'blue';
+            }
             tableData.style.cursor = 'crosshair';
           });
-          tableData.addEventListener('mouseleave', () => {
-            // tableData.style.backgroundColor = 'white';
+          tableData.addEventListener('mouseleave', (e) => {
+            const cell = e.target;
+            const row = cell.getAttribute('row');
+            const column = cell.getAttribute('column');
+
+            if (
+              players[a].gameboard.board[row][column][0] !== 'X' &&
+              players[a].gameboard.board[row][column][0] !== 'O'
+            ) {
+              tableData.style.backgroundColor = 'white';
+            }
           });
           tableData.addEventListener('click', (e) => {
             const specificCell = e.target;
