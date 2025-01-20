@@ -2,6 +2,10 @@
 
 This project is a beginner-friendly implementation of the classic Battleship game, created using only HTML, CSS, and JavaScript. It’s designed to help new developers understand fundamental concepts of web development while having fun with an interactive project.
 
+## 🚀 Live Demo
+
+Check out the live application here: [Battleship](https://stathisplakakis.github.io/Battleship/)
+
 ## 🎮 About the Game
 
 The Battleship game is a two-player strategy game where players take turns guessing the location of their opponent's ships on a grid. This implementation includes:
